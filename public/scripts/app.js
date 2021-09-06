@@ -88,6 +88,85 @@ var templateThree = React.createElement(
 	)
 );
 
+// CONDITIONAL RENDERING:
+
+var user2 = {
+	name: "Carter",
+	age: 27,
+	location: "Utah"
+};
+
+function getLocation(location) {
+	if (location) {
+		return React.createElement(
+			"p",
+			null,
+			"Location: ",
+			location
+		);
+	}
+}
+
+var templateFour = React.createElement(
+	"div",
+	null,
+	React.createElement(
+		"h1",
+		null,
+		user2.name ? user2.name : "Anonymous"
+	),
+	user2.age && user2.age >= 18 && React.createElement(
+		"p",
+		null,
+		"Age: ",
+		user2.age
+	),
+	getLocation(user2.location)
+);
+
+//TODO - only render the subtitle (and p tag around subtitle) if subtitle exists - logical and operator
+//TODO - render new p tag - if options.length > 0 "Here are your options" else "No options"
+
+var appTwo = {
+	title: "Indecision App",
+	subtitle: "Make up your mind.",
+	options: ["one", "two"]
+};
+
+var templateFive = React.createElement(
+	"div",
+	null,
+	React.createElement(
+		"h1",
+		null,
+		appTwo.title
+	),
+	appTwo.subtitle && React.createElement(
+		"p",
+		null,
+		app.subtitle
+	),
+	React.createElement(
+		"p",
+		null,
+		appTwo.options.length > 0 ? "Here are your options:" : "No Options"
+	),
+	React.createElement(
+		"ol",
+		null,
+		React.createElement(
+			"li",
+			null,
+			"Item One"
+		),
+		React.createElement(
+			"li",
+			null,
+			"Item Two"
+		)
+	)
+);
+
 var appRoot = document.getElementById("app");
 
-ReactDOM.render(templateThree, appRoot);
+ReactDOM.render(templateFive, appRoot);

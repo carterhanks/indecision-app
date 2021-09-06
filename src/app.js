@@ -47,6 +47,50 @@ const templateThree = (
 	</div>
 );
 
+// CONDITIONAL RENDERING:
+
+const user2 = {
+	name: "Carter",
+	age: 27,
+	location: "Utah"
+};
+
+function getLocation(location) {
+	if (location) {
+		return <p>Location: {location}</p>;
+	}
+}
+
+const templateFour = (
+	<div>
+		<h1>{user2.name ? user2.name : "Anonymous"}</h1>
+		{user2.age && user2.age >= 18 && <p>Age: {user2.age}</p>}
+		{getLocation(user2.location)}
+	</div>
+);
+
+//TODO - only render the subtitle (and p tag around subtitle) if subtitle exists - logical and operator
+//TODO - render new p tag - if options.length > 0 "Here are your options" else "No options"
+
+const appTwo = {
+	title: "Indecision App",
+	subtitle: "Make up your mind.",
+	options: ["one", "two"]
+};
+
+const templateFive = (
+	<div>
+		<h1>{appTwo.title}</h1>
+		{appTwo.subtitle && <p>{app.subtitle}</p>}
+		<p>{appTwo.options.length > 0 ? "Here are your options:" : "No Options"}</p>
+
+		<ol>
+			<li>Item One</li>
+			<li>Item Two</li>
+		</ol>
+	</div>
+);
+
 const appRoot = document.getElementById("app");
 
-ReactDOM.render(templateThree, appRoot);
+ReactDOM.render(templateFive, appRoot);
